@@ -18,6 +18,9 @@ module robotEvents {
 	
 	forall percept(holding(Block)) do insert(holding(Block)).
 	forall percept(not(holding(Block))) do delete(holding(Block)).
+	
+	if percept(sequenceIndex(Index)) then insert(sequenceIndex(Index)).
+	if percept(not(sequenceIndex(Index))) then delete(sequenceIndex(Index)).
 	% Exercise 2.5b: insert code for goal management that allows an agent to systematically search for blocks. (if needed)
 	
 	% Exercise 2.6b: insert code for goal management that makes the agent deliver a block when it 

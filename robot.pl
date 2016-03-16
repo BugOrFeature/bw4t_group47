@@ -1,10 +1,13 @@
-:-dynamic in/1,			% matches the in/1 percept
+:-dynamic in/1,
 	state/1,
-	atBlock/1,			% matches the state/1 percept
+	atBlock/1,
 	zone/5,
 	color/2,
 	at/1,
-	holding/1.			% matches the zone/5 percept
+	holding/1,
+	place/1,
+	sequence/1,
+	sequenceIndex/1.
 
 % A room is a place with exactly one neighbour, i.e., there is only one way to get to and from that place.
 room(PlaceID) :- zone(_,PlaceID,_,_,Neighbours), length(Neighbours,1).
