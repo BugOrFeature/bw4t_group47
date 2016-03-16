@@ -7,12 +7,14 @@ module robotEvents {
 	
 	% Record when we are entering or leaving a room.
 	forall percept(in(Room)) do insert( in(Room) ).
-	forall percept(in(Room) do insert(visited(Room)).
+	forall percept(in(Room)) do insert(visited(Room)).
 	forall percept(not(in(Room))) do delete( in(Room) ).
 
 	% Exercise 2.1b: insert rules for handling percepts other than "sendonce" percepts.
 	forall percept(atBlock(Block)) do insert(atBlock(Block)).
-	forall bel( in(Room), atBlock(Block) do insert(Block(Block,Room))).
+	
+	forall bel(in(Room)), percept(color(Block, _)) do insert(block(Block,Room)).
+	
 	forall percept(not(atBlock(Block))) do delete(atBlock(Block)).
 	
 	forall bel(at(Place)), percept(at(NewPlace))  
