@@ -7,10 +7,12 @@ module robotEvents {
 	
 	% Record when we are entering or leaving a room.
 	forall percept(in(Room)) do insert( in(Room) ).
+	forall percept(in(Room) do insert(visited(Room)).
 	forall percept(not(in(Room))) do delete( in(Room) ).
 
 	% Exercise 2.1b: insert rules for handling percepts other than "sendonce" percepts.
 	forall percept(atBlock(Block)) do insert(atBlock(Block)).
+	forall bel( in(Room), atBlock(Block) do insert(Block(Block,Room))).
 	forall percept(not(atBlock(Block))) do delete(atBlock(Block)).
 	
 	forall bel(at(Place)), percept(at(NewPlace))  
@@ -23,6 +25,9 @@ module robotEvents {
 	if percept(not(sequenceIndex(Index))) then delete(sequenceIndex(Index)).
 	% Exercise 2.5b: insert code for goal management that allows an agent to systematically search for blocks. (if needed)
 	
+	
+
+
 	% Exercise 2.6b: insert code for goal management that makes the agent deliver a block when it 
 	%   knows about a block that can be delivered. (if needed)
 }
