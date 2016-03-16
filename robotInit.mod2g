@@ -16,4 +16,5 @@ module robotInit {
 	forall percept(color(Block, Color)) do insert(color(Block, Color)).
 	forall percept(place(Place)) do insert(place(Place)).
 	if percept(sequence(Sequence)) then insert(sequence(Sequence)).
+	if percept(at(Place)) then insert(at(Place)).
 }
