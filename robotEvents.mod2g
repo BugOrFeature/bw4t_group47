@@ -27,6 +27,8 @@ module robotEvents {
 	if percept(not(sequenceIndex(Index))) then delete(sequenceIndex(Index)).
 	
 	if bel(nextColorInSeq(Color)), percept(color(Block, Color)) then adopt(holding(Block)).
+	if bel(holding(Block)) then adopt(in('DropZone')).
+	
 	% Exercise 2.5b: insert code for goal management that allows an agent to systematically search for blocks. (if needed)
 	
 	
