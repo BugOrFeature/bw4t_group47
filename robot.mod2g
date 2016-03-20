@@ -3,13 +3,15 @@ use robot as actionspec.
 exit=nogoals.
 
 module main {
-	if a-goal(holding(Block)), bel(block(Block,Room)), bel(not(atBlock(Block))) then goToBlock(Block).
-	if a-goal(holding(Block)), bel(atBlock(Block)) then pickUp(Block).
+	if bel(in('DropZone')), bel(holding(Block)) then putDown.
+	if not(a-goal(in(Place))), bel(nextColorInSeq(Color)),bel(not(holding(_))), bel(block(Block,Place)) then adopt(in(Place)).
+	if a-goal(holding(Block)), bel(block(Block,Room)), bel(not(atBlock(Block))), bel(not(holding(_))) then goToBlock(Block).
+	if a-goal(holding(Block)), bel(atBlock(Block)), bel(not(holding(_))) then pickUp(Block).
+	if a-goal( in('DropZone')) then goTo('DropZone').
 	if a-goal( in(Place) ) then goTo(Place).
-	
 	% Exercise 2.5a: insert code for action rules that allows an agent to systematically search for blocks.
 
 	% Exercise 2.6a: insert code for action rules that makes the agent deliver a block when it 
 	%   knows about a block that can be delivered.
-	if bel(in('DropZone')), bel(holding(Block)) then putDown.
+
 }
