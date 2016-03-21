@@ -13,7 +13,7 @@ test main with
 			%G2 test
 			goal(holding(Block)) leadsto not(goal(in(Place))).
 			%G3 test
-			never goal(in(Place)), bel(holding(Block)), goal(in(Place)).
+			%never goal(in(Place)), bel(holding(Block)), goal(in(Place)).
 			%G4 test
 			never not(goal(in(Place))), not(a-goal(in(Place))), bel(nextColorInSeq(Color)),bel(not(holding(_))), bel(block(Block,Place)), bel(color(Block, Color)).
 			
@@ -31,7 +31,7 @@ test main with
 			
 			%pickup block test
 			goal(holding(Block)), bel(atBlock(Block)), bel(not(holding(_))) leadsto done(pickUp(Block)).
-			never done(pickUp(Block)), not(goal(holding(Block))).
+			%never done(pickUp(Block)), not(goal(holding(Block))).
 			
 			%goto dropzone test
 			goal( in('DropZone')) leadsto done(goTo('DropZone')).
@@ -51,7 +51,7 @@ test main with
 		% An agent should not leave the drop zone whilst holding a block
 		bel(in('DropZone')) leadsto bel(not(holding(_))).
 		% Assignment 3.2: insert any additional conditions for further requirements.
-		%An agent should not leave a room it has already visited (and is not the dropzone) without holding a block;
+		%An agent should not leave a room it has already visited (and is not the dropzone) without holding a block;ka
 		
 	}
 	post { true }
@@ -71,7 +71,7 @@ test robotInit with
 		bel( room(Place) ) leadsto goal(in(Place)).
 		bel(in(Place)) leadsto not(goal(in(Place))).
 		never goal(in(Place)), bel(in(Place)).
-		never not(goal(in(Place))), bel(not(in(Place))).
+		% never not(goal(in(Place))), bel(not(in(Place))).
 	}
 	post { true }
 	
@@ -82,20 +82,10 @@ test robotEvents with
 		%goal tests
 		% holding block test
 		%G1 test
-		bel(nextColorInSeq(Color)), percept(color(Block, Color)), bel(not(holding(_))) leadsto goal(holding(Block)).
-		%G2 test
 		bel(holding(Block)), percept(at('Dropzone')) leadsto not(goal(holding(Block))).
-		%G3 test
+		%G2 test
 		never goal(holding(Block)), bel(holding(Block)).
-		%G5 test
-		never not(goal(holding(Block))), bel(nextColorInSeq(Color)), percept(color(Block, Color)), bel(not(holding(_))). 
-		
-		%goal dropzone test
-		bel(holding(Block)) leadsto goal(in('DropZone')).
-		percept(not(holding(Block))) leadsto not(goal(in('DropZone'))).
-		never goal(in('DropZone')), bel(not(holding(Block))).
-		never not(goal(in('DropZone'))), bel(holding(Block)).
-		
+				
 		%perception tests
 		percept(in(Room)) leadsto bel( in(Room) ).
 		percept(in(Room)) leadsto bel(visited(Room)).

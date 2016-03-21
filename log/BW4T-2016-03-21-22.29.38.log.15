@@ -1,0 +1,14 @@
+23:15:56,819 - sequence
+23:15:56,819 - room RoomA3 contains blocks:  B W
+23:15:56,820 - room RoomA2 contains blocks:  W Y G R
+23:15:56,820 - room RoomB3 contains blocks:  B B O
+23:15:56,820 - room RoomC1 contains blocks:  O O O P O P
+23:15:56,820 - room RoomA1 contains blocks:  G
+23:15:56,821 - room RoomB2 contains blocks:  R R R
+23:15:56,821 - room RoomC3 contains blocks:  Y G G R O
+23:15:56,821 - room RoomB1 contains blocks:  Y
+23:15:56,821 - room RoomC2 contains blocks:  P O O
+23:15:56,821 - sequence O G R O O B
+23:21:09,627 - action Bot_1 goTo(DropZone)
+23:21:11,018 - action Bot_1 goTo(RoomB3)
+23:22:18,739 - total time is 52 minutes and 16 seconds

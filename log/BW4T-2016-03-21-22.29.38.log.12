@@ -1,0 +1,31 @@
+23:24:33,167 - sequence
+23:24:33,168 - room RoomA3 contains blocks:  Y
+23:24:33,168 - room RoomA2 contains blocks:  O Y
+23:24:33,168 - room RoomB3 contains blocks:  O O Y R
+23:24:33,168 - room RoomC1 contains blocks:  W G G
+23:24:33,168 - room RoomA1 contains blocks:  R W P
+23:24:33,168 - room RoomB2 contains blocks:  W O B
+23:24:33,168 - room RoomC3 contains blocks:  G O R B
+23:24:33,169 - room RoomB1 contains blocks:  R G O W
+23:24:33,169 - room RoomC2 contains blocks:  Y B B R
+23:24:33,169 - sequence R R W Y W Y
+23:24:39,932 - action Bot_1 goTo(DropZone)
+23:24:41,421 - action Bot_1 goTo(RoomB3)
+23:24:46,197 - action Bot_1 pickUp(44)
+23:26:17,288 - action Bot_1 goTo(DropZone)
+23:26:18,025 - action Bot_1 goTo(RoomB3)
+23:26:21,932 - Bot Bot_1 collided.
+23:26:21,976 - action Bot_1 goTo(RoomB3)
+23:26:22,415 - Bot Bot_1 collided.
+23:26:22,441 - action Bot_1 goTo(RoomB3)
+23:26:22,889 - Bot Bot_1 collided.
+23:26:22,935 - action Bot_1 goTo(RoomB3)
+23:26:23,386 - Bot Bot_1 collided.
+23:26:23,456 - action Bot_1 goTo(RoomB3)
+23:26:23,690 - total time is 56 minutes and 21 seconds
+23:26:23,691 - agentsummary Bot_1 handicaps none
+23:26:23,691 - agentsummary robot gooddrops 0
+23:26:23,691 - agentsummary robot wrongdrops 0
+23:26:23,691 - agentsummary robot nmessage 0
+23:26:23,691 - agentsummary robot idletime 1.471
+23:26:23,691 - agentsummary robot nroomsentered 1
