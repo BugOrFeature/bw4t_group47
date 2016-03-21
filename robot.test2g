@@ -67,9 +67,11 @@ test robotInit with
 		percept(place(Place)) leadsto bel(place(Place)).
 		percept(sequence(Sequence)) leadsto bel(sequence(Sequence)).
 		percept(at(Place)) leadsto bel(at(Place)).
-		% test initial goals
+		% test initial in(Place) goals
 		bel( room(Place) ) leadsto goal(in(Place)).
-		
+		bel(in(Place)) leadsto not(goal(in(Place))).
+		never goal(in(Place)), bel(in(Place)).
+		never not(goal(in(Place))), bel(not(in(Place))).
 	}
 	post { true }
 	
@@ -101,7 +103,6 @@ test robotEvents with
 		bel(in(Room)), percept(color(Block, _)) leadsto bel(block(Block,Room)).
 		percept(holding(Block)) leadsto bel(holding(Block)).
 		percept(color(Block, Color)) leadsto bel(color(Block, Color)).
-		
 	}
 	post { true }
 	
