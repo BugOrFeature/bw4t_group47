@@ -3,13 +3,20 @@ use robot as actionspec.
 exit=nogoals.
 
 module main {
-	if bel(in('DropZone')), bel(holding(Block)) then putDown.
-	if not(a-goal(in(Place))), bel(nextColorInSeq(Color)),bel(not(holding(_))), bel(block(Block,Place)), bel(color(Block, Color)) then adopt(in(Place)).
-	if a-goal(holding(Block)), bel(block(Block,Room)), bel(not(atBlock(Block))), bel(not(holding(_))) then goToBlock(Block).
-	if a-goal(holding(Block)), bel(atBlock(Block)), bel(not(holding(_))) then pickUp(Block).
-	if a-goal( in('DropZone')) then goTo('DropZone').
-	if a-goal( in(Place) ) then goTo(Place).
 	% Exercise 2.5a: insert code for action rules that allows an agent to systematically search for blocks.
+	
+	%if the robot is in the dropzone and holding a block then put it down.
+	if bel(in('DropZone')), bel(holding(Block)) then putDown.
+	%if the bot has visited all rooms go to the room containing the block required in the sequence.
+	if not(a-goal(in(Place))), bel(nextColorInSeq(Color)),bel(not(holding(_))), bel(block(Block,Place)), bel(color(Block, Color)) then adopt(in(Place)).
+	%if the bot wants to hold a specific block then goto that block.
+	if a-goal(holding(Block)), bel(block(Block,Room)), bel(not(atBlock(Block))), bel(not(holding(_))) then goToBlock(Block).
+	% if the bot wants to hold a block and is at that block then pick it up.
+	if a-goal(holding(Block)), bel(atBlock(Block)), bel(not(holding(_))) then pickUp(Block).
+	% if the bot has a goal to goto the dropzone then goto the drop zone
+	if a-goal( in('DropZone')) then goTo('DropZone').
+	% if the bot wants to do to a place then go to that place.
+	if a-goal( in(Place) ) then goTo(Place).
 
 	% Exercise 2.6a: insert code for action rules that makes the agent deliver a block when it 
 	%   knows about a block that can be delivered.

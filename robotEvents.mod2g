@@ -1,6 +1,12 @@
 use robot as knowledge.
 
 module robotEvents {
+	% Exercise 2.5b: insert code for goal management that allows an agent to systematically search for blocks. (if needed)
+	
+
+	% Exercise 2.6b: insert code for goal management that makes the agent deliver a block when it 
+	%   knows about a block that can be delivered. (if needed)
+	
 	% Update the agent's state of movement.
 	forall bel( state(State)), percept(state(NewState))  
 		do delete( state(State) ) + insert( state(NewState) ).
@@ -13,31 +19,32 @@ module robotEvents {
 	% Exercise 2.1b: insert rules for handling percepts other than "sendonce" percepts.
 	forall percept(atBlock(Block)) do insert(atBlock(Block)).
 	
+	% if the bot is in a room and percepts a block then save that in the belief base
 	forall bel(in(Room)), percept(color(Block, _)) do insert(block(Block,Room)).
+	% if the block is not in the room anymore then delete the block belief
 	forall bel(in(Room)), bel(color(Block, Color)), percept(not(color(Block, Color))) do delete(block(Block,Room)).
 	
+	% if the bot is not at a block then delete that belief.
 	forall percept(not(atBlock(Block))) do delete(atBlock(Block)).
 	
+	% updating the at belief
 	forall bel(at(Place)), percept(at(NewPlace))  
 		do delete(at(Place)) + insert(at(NewPlace)).
 		
+	% if it is holding a block adopt it in the belief base.
 	forall percept(holding(Block)) do insert(holding(Block)).
+	% if it is not holding a block remove it drom the belief base.
 	forall percept(not(holding(Block))) do delete(holding(Block)).
 	
+	% saving the colors and block id's in the belief base
 	forall percept(color(Block, Color)) do insert(color(Block, Color)).
 	
+	% updating the sequenceindex after a block is found.
 	forall bel(sequenceIndex(Index)), percept(sequenceIndex(NewIndex))  
 		do delete(sequenceIndex(Index)) + insert(sequenceIndex(NewIndex)).
 	
 	%if the next color in sequence is the same as the block in the room and your are not holding a block then make a new goal holding(Block)
 	if bel(holding(Block)) then adopt(in('DropZone')).
 	if bel(nextColorInSeq(Color)), percept(color(Block, Color)), bel(not(holding(_))) then adopt(holding(Block)).
-	% Exercise 2.5b: insert code for goal management that allows an agent to systematically search for blocks. (if needed)
-	
-	
-	
 
-
-	% Exercise 2.6b: insert code for goal management that makes the agent deliver a block when it 
-	%   knows about a block that can be delivered. (if needed)
 }
