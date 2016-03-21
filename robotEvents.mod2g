@@ -14,6 +14,7 @@ module robotEvents {
 	forall percept(atBlock(Block)) do insert(atBlock(Block)).
 	
 	forall bel(in(Room)), percept(color(Block, _)) do insert(block(Block,Room)).
+	forall bel(in(Room)), bel(color(Block, Color)), percept(not(color(Block, Color))) do delete(block(Block,Room)).
 	
 	forall percept(not(atBlock(Block))) do delete(atBlock(Block)).
 	
@@ -22,6 +23,8 @@ module robotEvents {
 		
 	forall percept(holding(Block)) do insert(holding(Block)).
 	forall percept(not(holding(Block))) do delete(holding(Block)).
+	
+	forall percept(color(Block, Color)) do insert(color(Block, Color)).
 	
 	forall bel(sequenceIndex(Index)), percept(sequenceIndex(NewIndex))  
 		do delete(sequenceIndex(Index)) + insert(sequenceIndex(NewIndex)).

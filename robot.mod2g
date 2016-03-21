@@ -4,7 +4,7 @@ exit=nogoals.
 
 module main {
 	if bel(in('DropZone')), bel(holding(Block)) then putDown.
-	if not(a-goal(in(Place))), bel(nextColorInSeq(Color)),bel(not(holding(_))), bel(block(Block,Place)) then adopt(in(Place)).
+	if not(a-goal(in(Place))), bel(nextColorInSeq(Color)),bel(not(holding(_))), bel(block(Block,Place)), bel(color(Block, Color)) then adopt(in(Place)).
 	if a-goal(holding(Block)), bel(block(Block,Room)), bel(not(atBlock(Block))), bel(not(holding(_))) then goToBlock(Block).
 	if a-goal(holding(Block)), bel(atBlock(Block)), bel(not(holding(_))) then pickUp(Block).
 	if a-goal( in('DropZone')) then goTo('DropZone').
