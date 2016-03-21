@@ -78,16 +78,29 @@ test robotEvents with
 	pre { true }
 	in {
 		%goal tests
-			% holding block test
-			%G1 test
-			bel(nextColorInSeq(Color)), percept(color(Block, Color)), bel(not(holding(_))) leadsto goal(holding(Block)).
-			%G2 test
-			bel(holding(Block)), percept(at('Dropzone')) leadsto not(goal(holding(Block))).
-			%G3 test
-			never goal(holding(Block)), bel(holding(Block)).
-			%G5 test
-			never not(goal(holding(Block))), bel(nextColorInSeq(Color)), percept(color(Block, Color)), bel(not(holding(_))). 
-
+		% holding block test
+		%G1 test
+		bel(nextColorInSeq(Color)), percept(color(Block, Color)), bel(not(holding(_))) leadsto goal(holding(Block)).
+		%G2 test
+		bel(holding(Block)), percept(at('Dropzone')) leadsto not(goal(holding(Block))).
+		%G3 test
+		never goal(holding(Block)), bel(holding(Block)).
+		%G5 test
+		never not(goal(holding(Block))), bel(nextColorInSeq(Color)), percept(color(Block, Color)), bel(not(holding(_))). 
+		
+		%goal dropzone test
+		bel(holding(Block)) leadsto goal(in('DropZone')).
+		percept(not(holding(Block))) leadsto not(goal(in('DropZone'))).
+		never goal(in('DropZone')), bel(not(holding(Block))).
+		never not(goal(in('DropZone'))), bel(holding(Block)).
+		
+		%perception tests
+		percept(in(Room)) leadsto bel( in(Room) ).
+		percept(in(Room)) leadsto bel(visited(Room)).
+		percept(atBlock(Block)) leadsto bel(atBlock(Block)).
+		bel(in(Room)), percept(color(Block, _)) leadsto bel(block(Block,Room)).
+		percept(holding(Block)) leadsto bel(holding(Block)).
+		percept(color(Block, Color)) leadsto bel(color(Block, Color)).
 		
 	}
 	post { true }
