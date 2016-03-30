@@ -15,6 +15,9 @@ module robotEvents {
 	forall percept(in(Room)) do insert( in(Room) ).
 	forall percept(in(Room)) do insert(visited(Room)).
 	forall percept(not(in(Room))) do delete( in(Room) ).
+	
+	% doesnt work due to dropping the dropzone goal?! -- maybe fixed
+	forall allother.sent(in(Place)) do drop(in(Place)).
 
 	% Exercise 2.1b: insert rules for handling percepts other than "sendonce" percepts.
 	forall percept(atBlock(Block)) do insert(atBlock(Block)).

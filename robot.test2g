@@ -38,8 +38,8 @@ test main with
 			never done(goTo('DropZone')), not(goal(in('DropZone'))).
 			
 			%goto place test
-			goal( in(Place) ) leadsto done(goTo(Place)).
-			never done(goTo(Place)), not(goal(in(Place))).
+			%goal( in(Place) ) leadsto done(goTo(Place)).
+			%never done(goTo(Place)), not(goal(in(Place))).
 				
 		% Assignment 3.1: insert test conditions for the mandatory requirements.
 		% An agent should not drop a block outside a room (i.e. in a corridor)
