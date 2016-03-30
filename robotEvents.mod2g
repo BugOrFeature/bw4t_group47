@@ -6,7 +6,7 @@ module robotEvents {
 
 	% Exercise 2.6b: insert code for goal management that makes the agent deliver a block when it 
 	%   knows about a block that can be delivered. (if needed)
-	
+		
 	% Update the agent's state of movement.
 	forall bel( state(State)), percept(state(NewState))  
 		do delete( state(State) ) + insert( state(NewState) ).
@@ -46,5 +46,4 @@ module robotEvents {
 	%if the next color in sequence is the same as the block in the room and your are not holding a block then make a new goal holding(Block)
 	if bel(holding(Block)) then adopt(in('DropZone')).
 	if bel(nextColorInSeq(Color)), percept(color(Block, Color)), bel(not(holding(_))) then adopt(holding(Block)).
-
 }

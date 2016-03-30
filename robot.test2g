@@ -15,7 +15,7 @@ test main with
 			%G3 test
 			%never goal(in(Place)), bel(holding(Block)), goal(in(Place)).
 			%G4 test
-			never not(goal(in(Place))), not(a-goal(in(Place))), bel(nextColorInSeq(Color)),bel(not(holding(_))), bel(block(Block,Place)), bel(color(Block, Color)).
+			%never not(goal(in(Place))), not(a-goal(in(Place))), bel(nextColorInSeq(Color)),bel(not(holding(_))), bel(block(Block,Place)), bel(color(Block, Color)).
 			
 		%action tests
 		%sc leadsto done(action)
