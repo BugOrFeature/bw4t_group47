@@ -17,12 +17,12 @@ module robotEvents {
 	forall percept(not(in(Room))) do delete( in(Room) ).
 	
 	if bel(nextColorInSeq(Color)), bel(color(Block, Color)), bel(not(holding(_))) then adopt(holding(Block)).
-	% doesnt work due to dropping the dropzone goal?! -- maybe fixed
 	
-	% if you are at a place send that you are there. maybe obselete
+	
+	%%%START MESSAGE PASSING 1.4, 1.5 %%%
+	
+	% if you are at a place send that you are there. 
 	forall bel(at(Place)), not(bel(at('DropZone'))) do allother.send(at(Place)).
-	% if another bot sent that he as at a place and you are not holding a block then do not go to that place
-	% forall (Bot).sent(at(Place)), bel(not(holding(Block))) do drop(in(Place)).
 	
 	%send that the rooms have been visited
 	forall bel(visited(Room)), bel(not(at('DropZone'))) do allother.send(visited(Room)).
@@ -31,6 +31,12 @@ module robotEvents {
 	%send where the blocks are located
 	forall bel(in(Room)), percept(color(Block, _)) do allother.send(block(Block,Room)).
 	forall (Bot).sent(block(Block,Room)) do insert(block(Block,Room)).
+	
+	% send if blocks are not at their location anymore
+	forall bel(in(Room)), bel(color(Block, Color)), percept(not(color(Block, Color))) do allother.send(not(block(Block,Room))).
+	forall (Bot).sent(not(block(Block,Room))) do delete(block(Block,Room)).
+	
+	%%%END MESSAGE PASSING 1.4, 1.5 %%%
 	
 	% Exercise 2.1b: insert rules for handling percepts other than "sendonce" percepts.
 	forall percept(atBlock(Block)) do insert(atBlock(Block)).
