@@ -16,9 +16,22 @@ module robotEvents {
 	forall percept(in(Room)) do insert(visited(Room)).
 	forall percept(not(in(Room))) do delete( in(Room) ).
 	
+	if bel(nextColorInSeq(Color)), percept(color(Block, Color)), bel(not(holding(_))) then adopt(holding(Block)).
 	% doesnt work due to dropping the dropzone goal?! -- maybe fixed
-	forall allother.sent(in(Place)) do drop(in(Place)).
-
+	
+	% if you are at a place send that you are there. maybe obselete
+	forall bel(at(Place)), not(bel(at('DropZone'))) do allother.send(at(Place)).
+	% if another bot sent that he as at a place and you are not holding a block then do not go to that place
+	forall (Bot).sent(at(Place)), bel(not(holding(Block))) do drop(in(Place)).
+	
+	%send that the rooms have been visited
+	forall bel(visited(Room)), bel(not(at('DropZone'))) do allother.send(visited(Room)).
+	forall (Bot).sent(visited(Room)) do insert(visited(Room)).
+	
+	%send where the blocks are located
+	forall bel(in(Room)), percept(color(Block, _)) do allother.send(block(Block,Room)).
+	forall (Bot).sent(block(Block,Room)) do insert(block(Block,Room)).
+	
 	% Exercise 2.1b: insert rules for handling percepts other than "sendonce" percepts.
 	forall percept(atBlock(Block)) do insert(atBlock(Block)).
 	
@@ -48,5 +61,5 @@ module robotEvents {
 	
 	%if the next color in sequence is the same as the block in the room and your are not holding a block then make a new goal holding(Block)
 	if bel(holding(Block)) then adopt(in('DropZone')).
-	if bel(nextColorInSeq(Color)), percept(color(Block, Color)), bel(not(holding(_))) then adopt(holding(Block)).
+
 }

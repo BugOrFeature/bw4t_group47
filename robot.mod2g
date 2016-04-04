@@ -17,10 +17,12 @@ module main {
 	% if the bot wants to hold a block and is at that block then pick it up.
 	if a-goal(holding(Block)), bel(hasNewColor), bel(atBlock(Block)), bel(not(holding(_))) then pickUp(Block).
 	% if the bot has a goal to goto the dropzone then goto the drop zone
-	if a-goal( in('DropZone')) then goTo('DropZone').
+	if a-goal( in('DropZone')), bel(holding(Block)) then goTo('DropZone').
 	% if the bot wants to do to a place then go to that place.
-	if a-goal( in(Place) ) then goTo(Place).
-	if goal(in(Place)), goal(not(in("Dropzone"))) then allother.send(in(Place)).
+	
+	% as soon as you goto a place send that you are at a place, this message is parsed in events
+	if a-goal(in(Place)) then goTo(Place) + allother.send(at(Place)).
+
 	% if there is not a new color in the sequence to reach, the agent should terminate.
 	if a-goal(in(Place)), bel(not(hasNewColor)) then drop(in(Place)).
 	if a-goal(holding(Block)), bel(not(hasNewColor)) then drop(holding(Block)).
