@@ -8,26 +8,30 @@ module main {
 	% Exercise 2.6a: insert code for action rules that makes the agent deliver a block when it 
 	%   knows about a block that can be delivered.
 	
-	%if the robot is in the dropzone and holding a block then put it down.
-	if bel(in('DropZone')), bel(holding(Block)) then putDown.
+		%if the robot is in the dropzone and holding a block then put it down.
+	if bel(in('DropZone')), bel(holding(Block)), bel(nextColorInSeq(Color)), bel(color(Block, Color)) then putDown.
 	%if the bot has visited all rooms go to the room containing the block required in the sequence.
-	if not(a-goal(in(Place))), bel(hasNewColor), bel(nextColorInSeq(Color)),bel(not(holding(_))), bel(block(Block,Place)), bel(color(Block, Color)) then adopt(in(Place)).
+	if not(goal(in(Room))), bel(hasNewColor), bel(nextColorInSeq(Color)), bel(not(holding(_))), bel(block(Block, Room)), bel(color(Block, Color)) then adopt(in(Room)).
 	%if the bot wants to hold a specific block then goto that block.
 	if a-goal(holding(Block)), bel(hasNewColor), bel(block(Block,Room)), bel(not(atBlock(Block))), bel(not(holding(_))) then goToBlock(Block).
 	% if the bot wants to hold a block and is at that block then pick it up.
 	if a-goal(holding(Block)), bel(hasNewColor), bel(atBlock(Block)), bel(not(holding(_))) then pickUp(Block).
 	% if the bot has a goal to goto the dropzone then goto the drop zone
 	if a-goal( in('DropZone')), bel(holding(Block)) then goTo('DropZone').
-	% if the bot wants to do to a place then go to that place.
 	
+	% if the bot wants to do to a place then go to that place.
 	% as soon as you goto a place send that you are at a place, this message is parsed in events
 	if a-goal(in(Place)) then goTo(Place) + allother.send(at(Place)).
 
 	% if there is not a new color in the sequence to reach, the agent should terminate.
-	if a-goal(in(Place)), bel(not(hasNewColor)) then drop(in(Place)).
-	if a-goal(holding(Block)), bel(not(hasNewColor)) then drop(holding(Block)).
+	if a-goal(in(Place)), not(bel(hasNewColor)) then drop(in(Place)).
+	if a-goal(holding(Block)), not(bel(hasNewColor)) then drop(holding(Block)).
 	
-	% Exercise 1.2: 
+	% Assignment 4, exercise 1.2: 
 	% if the bot wants to pickup a block that is no longer in the specified room, drop the goal to pickup that block.
-	if a-goal(holding(Block)), bel(block(Block, Room)), percept(not(block(Block, Room))) then drop(holding(Block)). 
+	if a-goal(holding(Block)), bel(block(Block, Room)), percept(not(block(Block, Room))) then drop(holding(Block)).
+	
+	% Assignment 4, exercise 1.3: 
+	if bel(in(Room)), bel(not(in('DropZone'))), bel(nextColorInSeq(Color)), bel(holding(Block)), bel(not(color(Block, Color))) then putDown.
+	if goal(holding(Block)), bel(nextColorInSeq(Color)), not(bel(color(Block, Color))) then drop(holding(Block)).
 }

@@ -9,7 +9,8 @@ define goTo(Location) with
 % Exercise 2.3a: insert a specification for the goToBlock(Block) action.
 define goToBlock(Block) with
 	pre { block(Block,Room), at(Room), state(State), State \= traveling }
-	post { state(arrived) }	
+	post { state(arrived) }
+	
 % Exercise 2.3b: insert a specification for the pickUp action.
 define pickUp(Block) with
 	pre{ atBlock(Block), not(holding(_))}

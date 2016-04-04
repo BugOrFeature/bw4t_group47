@@ -1,0 +1,44 @@
+18:01:27,631 - sequence
+18:01:27,631 - room RoomA3 contains blocks:  Y G P B P
+18:01:27,631 - room RoomA2 contains blocks: 
+18:01:27,631 - room RoomB3 contains blocks:  O Y R R R Y B
+18:01:27,632 - room RoomC1 contains blocks:  O O
+18:01:27,632 - room RoomA1 contains blocks:  W W B W
+18:01:27,632 - room RoomB2 contains blocks:  O G
+18:01:27,632 - room RoomC3 contains blocks:  Y W
+18:01:27,632 - room RoomB1 contains blocks:  P W P
+18:01:27,632 - room RoomC2 contains blocks:  R R O
+18:01:27,632 - sequence R P W O R W
+18:04:16,452 - action Bot_2 goTo(RoomB3)
+18:04:16,520 - action Bot_3 goTo(RoomB3)
+18:04:23,662 - Bot Bot_3 collided.
+18:04:23,699 - action Bot_3 goTo(RoomB3)
+18:04:23,981 - action Bot_2 pickUp(46)
+18:04:24,122 - action Bot_2 goTo(DropZone)
+18:04:24,565 - Bot Bot_3 collided.
+18:04:24,614 - action Bot_3 goTo(RoomB3)
+18:04:26,000 - action Bot_3 pickUp(45)
+18:04:26,038 - action Bot_3 goTo(DropZone)
+18:04:31,854 - action Bot_2 putDown
+18:04:32,353 - action Bot_2 goTo(RoomA1)
+18:04:33,816 - action Bot_3 putDown
+18:04:34,321 - action Bot_3 goTo(RoomA1)
+18:04:36,247 - total time is 54 minutes and 48 seconds
+18:04:36,247 - agentsummary Bot_1 handicaps none
+18:04:36,247 - agentsummary robot gooddrops 0
+18:04:36,247 - agentsummary robot wrongdrops 0
+18:04:36,247 - agentsummary robot nmessage 0
+18:04:36,248 - agentsummary robot idletime 0.0
+18:04:36,248 - agentsummary robot nroomsentered 0
+18:04:36,248 - agentsummary Bot_2 handicaps none
+18:04:36,248 - agentsummary robot_0 gooddrops 1
+18:04:36,248 - agentsummary robot_0 wrongdrops 0
+18:04:36,248 - agentsummary robot_0 nmessage 0
+18:04:36,248 - agentsummary robot_0 idletime 0.74
+18:04:36,248 - agentsummary robot_0 nroomsentered 2
+18:04:36,248 - agentsummary Bot_3 handicaps none
+18:04:36,248 - agentsummary robot_1 gooddrops 0
+18:04:36,248 - agentsummary robot_1 wrongdrops 1
+18:04:36,248 - agentsummary robot_1 nmessage 0
+18:04:36,248 - agentsummary robot_1 idletime 0.952
+18:04:36,248 - agentsummary robot_1 nroomsentered 2
