@@ -1,0 +1,6 @@
+use robot as knowledge.
+order=randomall.
+module roomAdoption {
+	% Adopt initial goals.
+	forall bel( room(Place) ), bel(not(Place='DropZone')) do adopt( in(Place) ).
+}
